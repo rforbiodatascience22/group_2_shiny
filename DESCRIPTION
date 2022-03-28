@@ -2,10 +2,11 @@ Package: aminoapp
 Title: An Amazing Shiny App
 Version: 0.0.0.9000
 Authors@R: 
-    person(given = "firstname",
-           family = "lastname",
+    c(person(given = "oriade",
+           family = "simpson",
            role = c("aut", "cre"),
-           email = "your@email.com")
+           email = "s172084@dtu.dk"), 
+           
 Description: What the package does (one paragraph).
 License: What license is it under?
 Imports: 
