@@ -5,12 +5,21 @@
 #' @import shiny
 #' @noRd
 app_ui <- function(request) {
+
   tagList(
     # Leave this function for adding external resources
     golem_add_external_resources(),
     # Your application UI logic
     fluidPage(
-      h1("aminoapp")
+      h1("aminoapp"),
+
+      tabsetPanel(
+        tabPanel(title = "panel1",
+                 mod_dna_peptide_ui("dna_peptide_1")),
+
+        tabPanel(title = "panel2",
+                 mod_aa_plot_ui("aa_plot_1"))
+      )
     )
   )
 }
