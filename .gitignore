@@ -1,0 +1,7 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+myshinyapp.Rcheck/
+myshinyapp*.tar.gz
+myshinyapp*.tgz

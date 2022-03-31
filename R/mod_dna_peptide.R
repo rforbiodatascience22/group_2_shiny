@@ -37,6 +37,35 @@ mod_dna_peptide_server <- function(id){
   moduleServer( id, function(input, output, session){
     ns <- session$ns
     dna <- reactiveVal()
+    output$DNA <- renderUI({
+      textAreaInput(
+        inputId = ns("nucleotide_size"),
+        label = "DNA sequence",
+        placeholder = "Insert DNA sequence",
+        value = dna(),
+        height = 100,
+        width = 600
+      )
+    })
+    observeEvent(input$generate_dna, {
+      dna(
+        Group2Package::sample_with_replacement(input$nucleotide_size)
+      )
+    })
+    output$peptide <- renderText({
+      # Ensure input is not NULL and is longer than 2 characters
+      if(is.null(input$DNA)){
+        NULL
+      } else if(nchar(input$DNA) < 3){
+        NULL
+      } else{
+        input$DNA %>%
+          toupper() %>%
+          Group2Package::TU_sub() %>%
+          Group2Package::codon_start() %>%
+          Group2Package::translation()
+      }
+    })
   })
 }
 
